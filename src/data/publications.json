@@ -1,0 +1,40 @@
+[
+  {
+    "id": 1,
+    "title": "SigStyle: Signature Style Transfer via Personalized Text-to-Image Models",
+    "authors": ["Ye Wang", "Tongyuan Bai", "Xuping Xie", "Zili Yi", "Yilin Wang", "Rui Ma"],
+    "venue": "AAAI Conference on Artificial Intelligence",
+    "year": "2025",
+    "time": "2024-12-10",
+    "type": "conference",
+    "status": "accepted",
+    "abstract": "Style transfer enables the seamless integration of artistic styles from a style image into a content image, resulting in visually striking and aesthetically enriched outputs. Despite numerous advances in this field, existing methods did not explicitly focus on the signature style, which represents the distinct and recognizable visual traits of the image such as geometric and structural patterns, color palettes and brush strokes etc. In this paper, we introduce SigStyle, a framework that leverages the semantic priors that embedded in a personalized text-to-image diffusion model to capture the signature style representation. This style capture process is powered by a hypernetwork that efficiently fine-tunes the diffusion model for any given single style image. Style transfer then is conceptualized as the reconstruction process of content image through learned style tokens from the personalized diffusion model. Additionally, to ensure the content consistency throughout the style transfer process, we introduce a time-aware attention swapping technique that incorporates content information from the original image into the early denoising steps of target image generation. Beyond enabling high-quality signature style transfer across a wide range of styles, SigStyle supports multiple interesting applications, such as local style transfer, texture transfer, style fusion and style-guided text-to-image generation. Quantitative and qualitative evaluations demonstrate our approach outperforms existing style transfer methods for recognizing and transferring the signature styles.",
+    "tags": ["signature style transfer", "text-to-image models", "personalized generation", "computer vision"],
+    "links": {
+      "paper": "https://arxiv.org/pdf/2502.13997",
+      "project": "https://sigstyle.github.io/",
+      "code": "https://github.com/wangyePHD/SigStyle"
+    },
+    "featured": true,
+    "image": "/publications/aaai25wang.png"
+  },
+  {
+    "id": 2,
+    "title": "FreeScene: Mixed Graph Diffusion for 3D Scene Synthesis from Free Prompts",
+    "authors": ["Tongyuan Bai", "Wangyuanfan Bai", "Dong Chen", "Tieru Wu", "Manyi Li", "Rui Ma"],
+    "venue": "IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)",
+    "year": "2025",
+    "time": "2025-03-20",
+    "type": "conference",
+    "status": "accepted",
+    "abstract": "Controllability plays a crucial role in the practical applications of 3D indoor scene synthesis. Existing works either allow rough language-based control, that is convenient but lacks fine-grained scene customization, or employ graph based control, which offers better controllability but demands considerable knowledge for the cumbersome graph design process. To address these challenges, we present FreeScene, a user-friendly framework that enables both convenient and effective control for indoor scene this http URL, FreeScene supports free-form user inputs including text description and/or reference images, allowing users to express versatile design intentions. The user inputs are adequately analyzed and integrated into a graph representation by a VLM-based Graph Designer. We then propose MG-DiT, a Mixed Graph Diffusion Transformer, which performs graph-aware denoising to enhance scene generation. Our MG-DiT not only excels at preserving graph structure but also offers broad applicability to various tasks, including, but not limited to, text-to-scene, graph-to-scene, and rearrangement, all within a single model. Extensive experiments demonstrate that FreeScene provides an efficient and user-friendly solution that unifies text-based and graph based scene synthesis, outperforming state-of-the-art methods in terms of both generation quality and controllability in a range of applications.",
+    "tags": ["3d scene synthesis", "diffusion models", "graph neural networks", "text-to-3d"],
+    "links": {
+      "paper": "https://arxiv.org/pdf/2506.02781",
+      "project": "https://cangmushui.github.io/FreeScene-io/",
+      "code": "https://github.com/cangmushui/FreeScene"
+    },
+    "featured": true,
+    "image": "/publications/cvpr25bai.png"
+  }
+] 

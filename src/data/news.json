@@ -1,0 +1,25 @@
+{
+  "_types": {
+    "publication": "📚 论文发表 - 蓝色学术帽图标，用于论文被接收、发表等学术成果",
+    "award": "🏆 获奖信息 - 黄色奖章图标，用于获得奖学金、荣誉、竞赛奖项等",
+    "conference": "👥 会议参加 - 绿色会议图标，用于参加学术会议、研讨会等",
+    "milestone": "⚡ 里程碑事件 - 紫色闪电图标，用于重要的项目进展、开源项目里程碑等",
+    "teaching": "📖 教学相关 - 靛蓝色书本图标，用于担任助教、开课、教学活动等"
+  },
+  "news": [
+    {
+      "date": "2025-03-20",
+      "title": "Our paper accepted to CVPR 2025",
+      "content": "Our paper 'FreeScene: Mixed Graph Diffusion for 3D Scene Synthesis from Free Prompts' has been accepted to CVPR 2025!",
+      "type": "publication",
+      "link": "#publications"
+    },
+    {
+      "date": "2024-12-10",
+      "title": "Our paper accepted to AAAI 2025",
+      "content": "Our paper 'SigStyle: Signature Style Transfer via Personalized Text-to-Image Models' has been accepted to AAAI 2025!",
+      "type": "publication",
+      "link": "#publications"
+    }
+  ]
+}
