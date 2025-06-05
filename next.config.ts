@@ -1,6 +1,5 @@
 import type { NextConfig } from "next";
 
-const isGitHubPages = process.env.GITHUB_PAGES === 'true';
 const isProduction = process.env.NODE_ENV === 'production';
 
 const nextConfig: NextConfig = {
@@ -11,8 +10,8 @@ const nextConfig: NextConfig = {
   images: {
     unoptimized: true
   },
-  basePath: isGitHubPages ? '/cangmushui.github.io' : '',
-  assetPrefix: isGitHubPages ? '/cangmushui.github.io/' : '',
+  basePath: '',
+  assetPrefix: '',
 };
 
 export default nextConfig;

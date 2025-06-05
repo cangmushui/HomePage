@@ -21,3 +21,49 @@ body {
   color: var(--foreground);
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
 }
+
+/* 粒子浮动动画 */
+@keyframes float {
+  0% {
+    transform: translateY(0px) translateX(0px) scale(1);
+    opacity: 0.7;
+  }
+  50% {
+    transform: translateY(-10px) translateX(5px) scale(1.1);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-20px) translateX(-5px) scale(0.9);
+    opacity: 0.5;
+  }
+}
+
+/* 头像光晕呼吸效果 */
+@keyframes breathe {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.6;
+  }
+  50% {
+    transform: scale(1.05);
+    opacity: 0.8;
+  }
+}
+
+/* 背景渐变动画 */
+@keyframes gradientShift {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+/* 限制文本行数 */
+.line-clamp-3 {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}

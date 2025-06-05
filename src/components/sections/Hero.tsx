@@ -144,9 +144,16 @@ export default function Hero() {
       {/* 层1: 天蓝色默认背景 - 始终存在 */}
       <div className="absolute inset-0 bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-gray-900 dark:to-gray-800" />
       
+      {/* 层1.5: 背景渐变增强层 - 根据加载状态调整 */}
+      <div className={`absolute inset-0 transition-all duration-2000 ease-out ${
+        loadingProgress > 50 
+          ? 'bg-gradient-to-br from-blue-100/50 via-indigo-100/30 to-purple-100/20 opacity-100' 
+          : 'bg-gradient-to-br from-blue-50/30 via-indigo-50/20 to-purple-50/10 opacity-60'
+      }`} />
+      
       {/* 层2: 加载过渡背景 - 在加载时显示 */}
       <div 
-        className={`absolute inset-0 transition-opacity duration-1000 ${
+        className={`absolute inset-0 transition-all duration-1500 ease-out ${
           loadingProgress < 100 ? 'opacity-100' : 'opacity-0'
         }`}
       >
@@ -164,11 +171,18 @@ export default function Hero() {
         </div>
       </div>
       
+      {/* 层2.5: 预过渡层 - 为背景图片准备 */}
+      <div className={`absolute inset-0 transition-all duration-2000 ease-out ${
+        loadingProgress >= 100 && !showImageBackground
+          ? 'bg-gradient-to-br from-indigo-200/40 via-blue-200/30 to-purple-200/20 opacity-100'
+          : 'opacity-0'
+      }`} />
+      
       {/* 层3: 风景背景图片 - 平滑淡入 */}
       {shouldShowLandscapeImage && (
         <div 
-          className={`absolute inset-0 transition-all duration-2000 ease-out ${
-            showImageBackground ? 'opacity-100 scale-100' : 'opacity-0 scale-110'
+          className={`absolute inset-0 transition-all duration-3000 ease-out ${
+            showImageBackground ? 'opacity-100 scale-100' : 'opacity-0 scale-105'
           }`}
           style={{
             backgroundImage: `url(${backgroundImage})`,
@@ -177,7 +191,11 @@ export default function Hero() {
             backgroundRepeat: 'no-repeat',
           }}
         >
-          <div className="absolute inset-0 bg-black/30 dark:bg-black/50" />
+          <div className={`absolute inset-0 transition-all duration-2000 ease-out ${
+            showImageBackground 
+              ? 'bg-gradient-to-br from-black/20 via-black/30 to-black/40' 
+              : 'bg-black/60'
+          }`} />
         </div>
       )}
       
@@ -188,17 +206,72 @@ export default function Hero() {
           {/* 个人照片 */}
           <div className="text-center lg:text-left">
             <div className="relative inline-block">
-              <div className="w-64 h-64 sm:w-80 sm:h-80 relative mx-auto lg:mx-0">
+              {/* 背景渐变圆环 - 根据背景状态变化 */}
+              <div className={`absolute -inset-6 rounded-full transition-all duration-2000 ease-out ${
+                shouldShowLandscapeImage && showImageBackground
+                  ? 'bg-gradient-to-r from-white/20 via-blue-200/30 to-indigo-200/30'
+                  : 'bg-gradient-to-r from-blue-500/20 via-indigo-500/20 to-purple-500/20'
+              } blur-xl`}></div>
+              
+              {/* 中间装饰圆环 */}
+              <div className={`absolute -inset-3 rounded-full border-2 transition-all duration-2000 ease-out ${
+                shouldShowLandscapeImage && showImageBackground
+                  ? 'border-white/30 bg-white/10'
+                  : 'border-blue-300/40 bg-blue-50/20 dark:border-blue-600/40 dark:bg-blue-900/20'
+              } backdrop-blur-sm`}></div>
+              
+              {/* 头像容器 */}
+              <div className={`w-64 h-64 sm:w-80 sm:h-80 relative mx-auto lg:mx-0 rounded-full overflow-hidden transition-all duration-2000 ease-out ${
+                shouldShowLandscapeImage && showImageBackground
+                  ? 'ring-4 ring-white/50 shadow-2xl shadow-black/30'
+                  : 'ring-4 ring-blue-200/50 shadow-xl shadow-blue-500/20 dark:ring-blue-600/50 dark:shadow-blue-900/30'
+              }`}>
                 <Image
                   src={personalData.avatar}
                   alt={personalData.name}
                   fill
-                  className="rounded-full object-cover shadow-xl"
+                  className={`object-cover transition-all duration-2000 ease-out ${
+                    shouldShowLandscapeImage && showImageBackground
+                      ? 'brightness-110 contrast-105'
+                      : 'brightness-100 contrast-100'
+                  }`}
                   priority
                 />
+                
+                {/* 头像上的光效 */}
+                <div className={`absolute inset-0 transition-all duration-2000 ease-out ${
+                  shouldShowLandscapeImage && showImageBackground
+                    ? 'bg-gradient-to-br from-white/10 via-transparent to-blue-500/10'
+                    : 'bg-gradient-to-br from-blue-400/5 via-transparent to-indigo-500/5'
+                }`}></div>
               </div>
-              {/* 装饰性圆环 */}
-              <div className="absolute -inset-4 bg-gradient-to-r from-blue-500 to-indigo-500 rounded-full opacity-20 blur-xl"></div>
+              
+              {/* 外层光晕效果 */}
+              <div className={`absolute -inset-8 rounded-full transition-all duration-3000 ease-out ${
+                shouldShowLandscapeImage && showImageBackground
+                  ? 'bg-gradient-to-r from-white/10 via-blue-100/15 to-indigo-100/10 opacity-60'
+                  : 'bg-gradient-to-r from-blue-400/10 via-indigo-400/10 to-purple-400/10 opacity-40'
+              } blur-2xl animate-pulse`}></div>
+              
+              {/* 动态粒子效果 */}
+              <div className="absolute -inset-10 pointer-events-none">
+                {[...Array(6)].map((_, i) => (
+                  <div
+                    key={i}
+                    className={`absolute w-2 h-2 rounded-full transition-all duration-2000 ease-out ${
+                      shouldShowLandscapeImage && showImageBackground
+                        ? 'bg-white/40'
+                        : 'bg-blue-400/60'
+                    }`}
+                    style={{
+                      left: `${20 + (i * 60) % 80}%`,
+                      top: `${15 + (i * 40) % 70}%`,
+                      animationDelay: `${i * 0.5}s`,
+                      animation: `float ${3 + (i * 0.5)}s ease-in-out infinite alternate`
+                    }}
+                  ></div>
+                ))}
+              </div>
             </div>
           </div>
 

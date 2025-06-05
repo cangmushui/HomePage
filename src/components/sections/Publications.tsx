@@ -94,11 +94,11 @@ export default function Publications() {
       <div className="space-y-8">
         {displayedPublications.map((publication) => (
           <Card key={publication.id} className="overflow-hidden">
-            <div className="md:flex">
+            <div className="flex flex-col md:flex-row">
               {/* 论文图片 */}
-              <div className="md:w-2/3">
-                <div className="relative h-40 md:h-full p-2 flex items-center justify-center">
-                  <div className="relative w-84 h-60">
+              <div className="w-full md:w-2/3 flex-shrink-0">
+                <div className="relative h-48 sm:h-56 md:h-full p-4 flex items-center justify-center bg-gray-50 dark:bg-gray-800">
+                  <div className="relative w-full max-w-sm h-40 sm:h-48 md:w-84 md:h-60">
                     <Image
                       src={publication.image}
                       alt={publication.title}
@@ -110,15 +110,15 @@ export default function Publications() {
               </div>
 
               {/* 论文信息 */}
-              <div className="md:w-3/4 p-6">
-                <div className="flex items-start justify-between mb-4">
-                  <div className="flex-1">
-                    <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2">
+              <div className="w-full md:w-3/4 p-4 md:p-6">
+                <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between mb-4">
+                  <div className="flex-1 mb-2 sm:mb-0">
+                    <h3 className="text-lg sm:text-xl font-bold text-gray-900 dark:text-white mb-2">
                       {publication.title}
                     </h3>
                     
                     {/* 作者列表 */}
-                    <p className="text-gray-700 dark:text-gray-300 mb-2">
+                    <p className="text-sm sm:text-base text-gray-700 dark:text-gray-300 mb-2">
                       {publication.authors.map((author, index) => (
                         <span key={index}>
                           {author === '您的姓名' ? (
@@ -132,24 +132,24 @@ export default function Publications() {
                     </p>
 
                     {/* 会议/期刊信息 */}
-                    <p className="text-gray-600 dark:text-gray-400 mb-3">
+                    <p className="text-sm sm:text-base text-gray-600 dark:text-gray-400 mb-3">
                       <em>{publication.venue}</em> ({publication.year})
                     </p>
                   </div>
 
                   {/* 类型标签 */}
-                  <span className={`px-2 py-1 rounded text-xs font-medium ml-4 ${getTypeColor(publication.type)}`}>
+                  <span className={`px-2 py-1 rounded text-xs font-medium sm:ml-4 self-start ${getTypeColor(publication.type)}`}>
                     {publication.type === 'journal' ? 'Journal' : 'Conference'}
                   </span>
                 </div>
 
                 {/* 摘要 */}
-                <p className="text-gray-700 dark:text-gray-300 mb-4 line-clamp-3">
+                <p className="text-sm sm:text-base text-gray-700 dark:text-gray-300 mb-4 line-clamp-3">
                   {publication.abstract}
                 </p>
 
                 {/* 链接 */}
-                <div className="flex flex-wrap gap-3">
+                <div className="flex flex-wrap gap-2 sm:gap-3">
                   {publication.links.paper && (
                     <a
                       href={publication.links.paper}

@@ -3,7 +3,7 @@
   "affiliation": "Jinlin university",
   "department": "ICL Group, School of Artificial Intelligence",
   "position": "Ph.D. Student",
-  "bio": "I am a research scholar specializing in artificial intelligence and computer graphics. My current work focuses on generating 3D spatial layouts for indoor and outdoor environments using diffusion models and large language models. My research vision is to automate the creation of diverse 3D scene assets, particularly those that exist solely in the realm of human imagination, contributing to the development of richly immersive and limitless virtual worlds.",
+  "bio": "I am a Ph.D. student working at the intersection of artificial intelligence and computer graphics. My current work focuses on generating 3D spatial layouts for indoor and outdoor scene using diffusion models and large language models. My research vision is to automate the creation of diverse 3D scene, particularly those that exist solely in the realm of human imagination, contributing to the development of richly immersive and limitless virtual worlds.",
   "avatar": "/avatar.jpg",
   "email": "baity23@mails.jlu.edu.cn",
   "location": "Changchun, China",
@@ -16,10 +16,12 @@
   },
   "interests": [
     "3D Scene Generation",
-    "Video Generation",
+    "Computer Graphics",
     "Diffusion Model",
-    "Large Language Model",
-    "Agent&MCP"
+    "Large Language Model", 
+    "Agent&MCP",
+    "Reinforcement Learning",
+    "Any Technology that Helps Build Interesting Worlds"
   ],
   "education": [
     {
@@ -48,7 +50,7 @@
     {
       "position": "FPGA Radar Engineer",
       "company": "Leijiu Technology Co., Ltd.",
-      "period": "2018 - 2020",
+      "period": "2018 - 2019",
       "description": "Worked on FPGA-based radar systems development and signal processing."
     },
     {
