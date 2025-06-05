@@ -2,6 +2,10 @@
 
 一个基于 Next.js 的响应式个人学术主页，支持双仓库管理和自动部署。
 
+## 🌐 在线预览
+
+👀 **查看效果**: [https://cangmushui.github.io](https://cangmushui.github.io)
+
 ## 🎯 项目特性
 
 - ✨ 现代化响应式设计
@@ -17,11 +21,13 @@
 本项目采用**双仓库管理**模式：
 
 - **源码仓库** (`HomePage`): 存放 Next.js 源代码
-- **部署仓库** (`cangmushui.github.io`): 存放构建后的静态文件
+- **部署仓库** (`username.github.io`): 存放构建后的静态文件
 
 ## 🚀 快速开始
 
-### 1. 克隆项目
+### 1. Fork 项目
+
+点击右上角的 "Fork" 按钮，或直接克隆：
 
 ```bash
 git clone https://github.com/cangmushui/HomePage.git
@@ -63,10 +69,10 @@ git commit -m "Initial commit: Next.js academic homepage"
 
 ```bash
 # 添加源码仓库（存放Next.js项目）
-git remote add origin https://github.com/cangmushui/HomePage.git
+git remote add origin https://github.com/YOUR_USERNAME/YOUR_SOURCE_REPO.git
 
 # 添加部署仓库（存放构建产物）  
-git remote add pages https://github.com/cangmushui/cangmushui.github.io.git
+git remote add pages https://github.com/YOUR_USERNAME/YOUR_USERNAME.github.io.git
 
 # 验证远程仓库配置
 git remote -v
@@ -75,10 +81,10 @@ git remote -v
 应该看到类似输出：
 
 ```
-origin  https://github.com/cangmushui/HomePage.git (fetch)
-origin  https://github.com/cangmushui/HomePage.git (push)
-pages   https://github.com/cangmushui/cangmushui.github.io.git (fetch)
-pages   https://github.com/cangmushui/cangmushui.github.io.git (push)
+origin  https://github.com/YOUR_USERNAME/YOUR_SOURCE_REPO.git (fetch)
+origin  https://github.com/YOUR_USERNAME/YOUR_SOURCE_REPO.git (push)
+pages   https://github.com/YOUR_USERNAME/YOUR_USERNAME.github.io.git (fetch)
+pages   https://github.com/YOUR_USERNAME/YOUR_USERNAME.github.io.git (push)
 ```
 
 #### 3. 推送源码到源码仓库
@@ -127,20 +133,20 @@ npm run deploy:pages
 1. 运行 `npm run build` 构建项目
 2. 创建临时目录并复制构建产物
 3. 在临时目录初始化新的git仓库
-4. 提交并推送到 `cangmushui.github.io` 仓库
+4. 提交并推送到你的 `username.github.io` 仓库
 5. 清理临时文件
 
 ## 📋 可用脚本
 
-| 脚本                         | 描述                                                                                   |
-| ---------------------------- | -------------------------------------------------------------------------------------- |
-| `npm run dev`              | 启动开发服务器                                                                         |
-| `npm run build`            | 构建生产版本                                                                           |
-| `npm run build:production` | 生产环境构建                                                                           |
-| `npm run push:source`      | 提交并推送源代码                                                                       |
+| 脚本                         | 描述                                                                            |
+| ---------------------------- | ------------------------------------------------------------------------------- |
+| `npm run dev`              | 启动开发服务器                                                                  |
+| `npm run build`            | 构建生产版本                                                                    |
+| `npm run build:production` | 生产环境构建                                                                    |
+| `npm run push:source`      | 提交并推送源代码                                                                |
 | `npm run deploy:pages`     | 构建并部署到GitHub Pages``*等价于: `npm run build && node deploy-pages.js`* |
-| `npm run lint`             | 代码检查                                                                               |
-| `npm run start`            | 启动生产服务器                                                                         |
+| `npm run lint`             | 代码检查                                                                        |
+| `npm run start`            | 启动生产服务器                                                                  |
 
 ## 🔧 项目配置
 
@@ -233,55 +239,30 @@ cangmushui.github.io/
 }
 ```
 
-## 🌐 部署说明
+## 🎨 部署说明
 
 ### GitHub Pages 设置
 
-1. 在 `cangmushui.github.io` 仓库设置中：
+1. 创建 `username.github.io` 仓库（将 `username` 替换为你的GitHub用户名）
+2. 在仓库设置中：
 
    - 进入 Settings → Pages
    - Source 选择 "Deploy from a branch"
    - Branch 选择 "main"
    - 保存设置
-2. 网站将在以下地址可访问：
-
-   - https://cangmushui.github.io
+3. 修改 `deploy-pages.js` 中的仓库地址为你的仓库
+4. 网站将在 `https://username.github.io` 可访问
 
 ### 自动部署流程
 
-当你运行 `npm run deploy:pages` 时：
+当你运行 `npm run deploy:pages` 时，脚本会自动：
 
-1. **构建阶段**：
+1. **构建项目** → 生成静态文件
+2. **创建临时目录** → 复制构建产物
+3. **初始化Git** → 提交并推送到部署仓库
+4. **清理临时文件** → 保持项目整洁
 
-   ```bash
-   npm run build
-   # 生成 out/ 目录
-   ```
-2. **部署准备**：
-
-   ```bash
-   # 创建临时目录
-   mkdir temp-deploy
-   # 复制构建产物
-   xcopy out\* temp-deploy\ /E /I /Y
-   ```
-3. **Git 操作**：
-
-   ```bash
-   cd temp-deploy
-   git init
-   git branch -M main
-   git remote add origin https://github.com/cangmushui/cangmushui.github.io.git
-   git add .
-   git commit -m "Deploy: 2024-01-01T00:00:00.000Z"
-   git push -f origin main
-   ```
-4. **清理**：
-
-   ```bash
-   cd ..
-   rm -rf temp-deploy
-   ```
+> **注意**: 首次部署前，请确保修改 `deploy-pages.js` 中的仓库地址为你自己的仓库。
 
 ## 🔧 故障排除
 
@@ -340,10 +321,19 @@ MIT License - 详见 [LICENSE](LICENSE) 文件。
 
 ## 📧 联系方式
 
+### 原作者
+
 - 邮箱: baity23@mails.jlu.edu.cn
 - GitHub: [@cangmushui](https://github.com/cangmushui)
 - 个人主页: [https://cangmushui.github.io](https://cangmushui.github.io)
 
+### 项目相关
+
+- 项目仓库: [HomePage](https://github.com/cangmushui/HomePage)
+- 在线预览: [https://cangmushui.github.io](https://cangmushui.github.io)
+- 问题反馈: [Issues](https://github.com/cangmushui/HomePage/issues)
+
 ---
 
 ⭐ 如果这个项目对你有帮助，请给个 Star！
+🍴 Fork 这个项目来创建你自己的学术主页吧！
